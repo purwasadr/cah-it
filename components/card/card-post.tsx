@@ -8,7 +8,7 @@ interface Props extends PostItem {
     className?: string;
 }
 
-const CardPost = ({className = '', title, slug = '', image, excerpt, category, date = ''}: Props) => {
+const CardPost = ({className = '', title, slug = '', image, excerpt, category, date, author}: Props) => {
     return (
         <div
             className={`w-full h-full ${className}`}
@@ -17,16 +17,17 @@ const CardPost = ({className = '', title, slug = '', image, excerpt, category, d
                 {image && <Image className="" src={`${BACKEND_API}${image}`} layout="fill" objectFit="cover" alt="Image"/>}
             </div>
             <section>
+                <p className="pt-4 text-sky-700 tracking-wider uppercase text-sm font-medium">{category}</p>
                 <Link href={`/${encodeURIComponent(slug)}`}>
                     <a>
-                        <h2 className="pt-4 text-2xl font-semibold">{title}</h2>
+                        <h2 className="pt-1 text-xl font-semibold">{title}</h2>
                     </a>
                 </Link>
-                <p className="pt-2 text-slate-500">{excerpt}</p>
-                <div className="flex items-center gap-2 pt-3 text-sm">
-                    <p>{category}</p>
+                <p className="pt-1 text-slate-500">{excerpt}</p>
+                <div className="flex items-center gap-2 pt-2 text-sm">
+                    <p>{author}</p>
                     <span className="text-xs">•</span>
-                    <p>{getDateShort(new Date(date))}</p>
+                    <p>{date ? getDateShort(date) : '-'}</p>
                 </div>
             </section>
         </div>
