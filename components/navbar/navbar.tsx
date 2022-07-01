@@ -33,18 +33,18 @@ const Navbar = () => {
 
     return (
         <nav className="sticky top-0 z-10 px-2 sm:px-4 py-2.5 border-b border-gray-200 bg-white dark:bg-gray-800">
-            <div className="flex flex-wrap max-w-[90rem] justify-between items-center px-3 lg:px-4 mx-auto">
+            <div className="flex flex-wrap max-w-5xl justify-between items-center px-3 lg:px-4 mx-auto">
                 <div className="flex items-center w-auto">
                     <Link href="/">
                         <a className="flex items-center">
-                            <span className="text-xl font-medium whitespace-nowrap dark:text-white">
+                            <span className="text-xl font-bold whitespace-nowrap dark:text-white">
                                 Ngeblog
                             </span>
                         </a>
                     </Link>
                 </div>
                 <div className="hidden md:flex md:items-center">
-                    <ul className="flex flex-row flex-wrap pl-4 text-sm font-medium">
+                    <ul className="flex space-x-8 flex-wrap text-sm font-semibold">
                         <NavbarLink href="/" caption="Home" />
                         <NavbarLink href="/divisions" caption="Division" />
                         <NavbarLink href="/contacts" caption="Contact" />
