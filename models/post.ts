@@ -1,11 +1,11 @@
 import axios from 'axios';
 import qs from 'qs';
-import { toPost, toPosts } from 'utils/mapper';
+import { toPost, toPosts, toPostSearch } from 'utils/mapper';
 import { BACKEND_API } from '../libs/constans';
 
 
 export interface Post {
-    id: number;
+    id?: number;
     title?: string;
     slug?: string;
     image?: string;
@@ -16,22 +16,29 @@ export interface Post {
 }
 
 export interface PostItem {
-    id: number;
+    id?: number;
     title?: string;
     slug?: string;
     image?: string;
     excerpt?: string;
     category?: string;
     date?: string;
+    author?: string;
+}
+
+export interface PostSearch {
+    id?: number;
+    title?: string;
+    slug?: string;
 }
 
 const getPosts = async () => {
     const query = qs.stringify({
-        populate: ['image', 'category']
+        populate: ['image', 'category', 'author']
     }, { encodeValuesOnly: true });
 
     const res = await axios.get(`${BACKEND_API}/api/posts?${query}`);
-    
+        
     return toPosts(res.data.data);
 }
 
@@ -46,13 +53,31 @@ const getPost = async (slug: string) => {
     }, { encodeValuesOnly: true });
 
     const res = await axios.get(`${BACKEND_API}/api/posts?${qsQuery}`);
+    const dataPost = res.data.data[0];
+
+    return dataPost ? toPost(dataPost) : undefined;
+}
+
+const getPostSearch = async (query: string) => {
+    const qsQuery = qs.stringify({
+        filters: {
+            title: {
+                $containsi: query
+            }
+        },
+    }, { encodeValuesOnly: true });
+
+    console.log('getPostSearchQuery:', qsQuery);
+
+    const req = await axios.get(`${BACKEND_API}/api/posts?${qsQuery}`);
     
-    return toPost(res.data.data[0]);
+    return toPostSearch(req.data.data)
 }
 
 const PostModel = {
     getPosts,
-    getPost
+    getPost,
+    getPostSearch
 }
 
 export default PostModel;
