@@ -6,11 +6,13 @@ import { getDateShort } from 'utils';
 
 interface Props extends PostItem {
     className?: string;
+    inputRef?: (node: any) => void;
 }
 
-const CardPost = ({className = '', title, slug = '', image, excerpt, category, date, author}: Props) => {
+const CardPost = ({className = '', inputRef, title, slug = '', image, excerpt, category, date, author}: Props) => {
     return (
-        <div
+        <article
+            ref={inputRef}
             className={`w-full h-full ${className}`}
         >
             <div className="relative aspect-[10/6] rounded-md overflow-hidden shadow-md">
@@ -30,7 +32,7 @@ const CardPost = ({className = '', title, slug = '', image, excerpt, category, d
                     <p>{date ? getDateShort(date) : '-'}</p>
                 </div>
             </section>
-        </div>
+        </article>
     );
 };
 
