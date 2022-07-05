@@ -74,10 +74,39 @@ const getPostSearch = async (query: string) => {
     return toPostSearch(req.data.data)
 }
 
+const getPostsPaging = (pageNum: number, pageSize: number = 20) => {
+    const qsQuery = qs.stringify({
+        populate: ['image', 'category', 'author'],
+        pagination: {
+            page: pageNum,
+            pageSize: pageSize,
+        }
+    }, { encodeValuesOnly: true });
+    const abortController = new AbortController();
+
+    console.log('getPostsPaging:', qsQuery);
+
+    const reqPosts = async () => {
+        const req = await axios.get(`${BACKEND_API}/api/posts?${qsQuery}`, { 
+            signal: abortController.signal
+         });
+        return {
+            data: toPosts(req.data.data),
+            meta: req.data.meta
+        }
+    }
+
+    return {
+        data: reqPosts(),
+        abortController
+    }
+}
+
 const PostModel = {
     getPosts,
     getPost,
-    getPostSearch
+    getPostSearch,
+    getPostsPaging
 }
 
 export default PostModel;
