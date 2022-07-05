@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import { toPost, toPosts, toPostSearch } from 'utils/mapper';
-import { BACKEND_API } from '../libs/constans';
+import { BACKEND_API } from 'libs/constants';
 
 
 export interface Post {

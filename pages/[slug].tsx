@@ -1,4 +1,4 @@
-import {BACKEND_API} from 'libs/constans';
+import {BACKEND_API} from 'libs/constants';
 import PostModel, {Post} from 'models/post';
 import {GetServerSideProps, NextPage} from 'next';
 import Image from 'next/image';

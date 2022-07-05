@@ -1,4 +1,4 @@
-import { BACKEND_API } from 'libs/constans';
+import { BACKEND_API } from 'libs/constants';
 import { Post, PostItem } from 'models/post';
 import Image from 'next/image';
 import Link from 'next/link';
