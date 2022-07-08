@@ -19,7 +19,7 @@ const CardPost = ({className = '', inputRef, title, slug = '', image, excerpt, c
                 {image && <Image className="" src={`${BACKEND_API}${image}`} layout="fill" objectFit="cover" alt="Image"/>}
             </div>
             <section>
-                <p className="pt-4 text-sky-700 tracking-wider uppercase text-sm font-medium">{category}</p>
+                <p className="pt-3.5 text-sky-700 tracking-wider uppercase text-sm font-medium">{category}</p>
                 <Link href={`/${encodeURIComponent(slug)}`}>
                     <a>
                         <h2 className="pt-1 text-xl font-semibold">{title}</h2>
@@ -29,7 +29,7 @@ const CardPost = ({className = '', inputRef, title, slug = '', image, excerpt, c
                 <div className="flex items-center gap-2 pt-2 text-sm">
                     <p>{author}</p>
                     <span className="text-xs">•</span>
-                    <p>{date ? getDateShort(date) : '-'}</p>
+                    <p>{getDateShort(date) ?? '-'}</p>
                 </div>
             </section>
         </article>
