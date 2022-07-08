@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-import { toPost, toPosts, toPostSearch } from 'utils/mapper';
+import { toPost, toPostItem, toPosts, toPostSearch } from 'utils/mapper';
 import { BACKEND_API } from 'libs/constants';
 
 
@@ -42,6 +42,26 @@ const getPosts = async () => {
     return toPosts(res.data.data);
 }
 
+const getFeaturedPost = async () => {
+    const qsQuery = qs.stringify({
+        filters: {
+            featured: {
+                $eq: true
+            },
+        },
+        sort: ['createdAt:desc'],
+        pagination: {
+            pageSize: 1,
+        },
+        populate: ['image', 'category', 'author']
+    }, { encodeValuesOnly: true });
+
+    const res = await axios.get(`${BACKEND_API}/api/posts?${qsQuery}`);
+    const dataPost = res.data.data[0];
+
+    return dataPost ? toPostItem(dataPost) : undefined;
+}
+
 const getPost = async (slug: string) => {
     const qsQuery = qs.stringify({
         filters: {
@@ -80,7 +100,12 @@ const getPostsPaging = (pageNum: number, pageSize: number = 20) => {
         pagination: {
             page: pageNum,
             pageSize: pageSize,
-        }
+        },
+        filters: {
+            featured: {
+                $eq: false
+            }
+        },
     }, { encodeValuesOnly: true });
     const abortController = new AbortController();
 
@@ -106,7 +131,8 @@ const PostModel = {
     getPosts,
     getPost,
     getPostSearch,
-    getPostsPaging
+    getPostsPaging,
+    getFeaturedPost,
 }
 
 export default PostModel;
