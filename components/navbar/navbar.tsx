@@ -2,6 +2,7 @@ import {Combobox, Dialog, Menu} from '@headlessui/react';
 import PostModel, { PostSearch } from 'models/post';
 import Link from 'next/link';
 import { ChangeEvent, forwardRef, useRef, useState } from 'react';
+import DialogCategories from '../dialog/dialog-categories';
 import SearchIcon from '../icon/search-icon';
 import NavbarLink from './navbar-link';
 
@@ -20,7 +21,7 @@ const MenuLink = forwardRef<HTMLAnchorElement, PropsMenuLink>(({ active, href, c
                     active
                         ? 'bg-gray-100'
                         : 'text-gray-900'
-                } inline-flex w-full items-center px-4 py-3 text-sm`}
+                } block w-full items-center px-4 py-3 text-sm`}
             {...rest}>
                 {children}
             </a>
@@ -36,8 +37,7 @@ const Navbar = () => {
     const searchTimer = useRef<NodeJS.Timeout>();
     const [selectedPerson, setSelectedPerson] = useState<PostSearch>();
     const [searchResult, setSearchResult] = useState<Array<PostSearch>>([]);
-
-    console.log('searchResult:', searchResult);
+    const [isDialogCategoriesOpen, setIsDialogCategoriesOpen] = useState(false);
     
     const handleSearchQueryChange = async (e: ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(e.target.value);
@@ -77,9 +77,14 @@ const Navbar = () => {
                 </div>
                 <div className="hidden md:flex md:items-center ml-auto">
                     <ul className="flex space-x-8 flex-wrap text-sm font-semibold">
-                        <NavbarLink href="/" caption="Home" />
-                        <NavbarLink href="/divisions" caption="Division" />
-                        <NavbarLink href="/contacts" caption="Contact" />
+                        <NavbarLink href="/">Home</NavbarLink>
+                        <li>
+                            <div className="py-2 text-gray-700 cursor-pointer dark:hover:text-white dark:text-gray-400" 
+                                onClick={() => setIsDialogCategoriesOpen(true)}>Categories</div>
+                            <DialogCategories 
+                                isDialogOpen={isDialogCategoriesOpen} 
+                                setDialogOpen={(value) => { setIsDialogCategoriesOpen(value)}} />
+                        </li>
                     </ul>
                 </div>
                 <div className="border-l ml-auto md:ml-4 pl-4">
@@ -102,7 +107,7 @@ const Navbar = () => {
                                             {searchResult.map((post) => (
                                                 <Link key={post.id} href={`/${post.slug}`}>
                                                     <a>
-                                                        <Combobox.Option className="py-3 px-4 font-bold hover:bg-slate-100" value={post}>
+                                                        <Combobox.Option className="py-3 px-4 font-medium hover:bg-slate-100" value={post}>
                                                             {post.title}
                                                         </Combobox.Option>
                                                     </a>
@@ -128,12 +133,12 @@ const Navbar = () => {
                             </Menu.Item>
                             <Menu.Item>
                                 {({active}) => (
-                                    <MenuLink active={active} href="/divisions">Divisions</MenuLink>
-                                )}
-                            </Menu.Item>
-                            <Menu.Item>
-                                {({active}) => (
-                                    <MenuLink active={active} href="/contacts">Contact</MenuLink>
+                                    <div className={`${
+                                        active
+                                            ? 'bg-gray-100'
+                                            : 'text-gray-900'
+                                        } w-full px-4 py-3 text-sm cursor-pointer`} 
+                                        onClick={() => setIsDialogCategoriesOpen(true)}>Categories</div>
                                 )}
                             </Menu.Item>
                         </Menu.Items>
