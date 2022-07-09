@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import PostModel, { PostItem } from 'models/post';
 import Spinner from '@/components/spinner/spinner';
+import { BACKEND_API } from 'libs/constants';
 
 const Home: NextPage = () => {
     const {isLoading, error, posts, lastPostElementRef} = usePostPaging();
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
             <section className="flex flex-col md:flex-row md:space-x-5">
                 <section className="w-full md:w-[60%] lg:w-2/3">
                     <div className="relative rounded-lg aspect-[10/6] md:aspect-[20/9] shadow-md overflow-hidden">
-                        <Image src="/img1.jpg" alt="Poster" layout="fill" objectFit="cover" />
+                       {featuredPost?.image && <Image src={`${BACKEND_API}${featuredPost?.image}`} alt="Poster" layout="fill" objectFit="cover" />}
                     </div>
                 </section>
                 <section className="flex flex-col justify-center w-full lg:w-1/3">
