@@ -10,7 +10,7 @@ export const toPosts = (posts: any[]) => {
         excerpt: post?.attributes?.excerpt,
         category: post?.attributes?.category?.data?.attributes?.name,
         date: post?.attributes?.createdAt,
-        author: post?.attributes?.author?.data?.attributes?.username
+        author: post?.attributes?.author?.data?.attributes?.full_name
     }));
 }
 
@@ -23,7 +23,7 @@ export const toPostItem = (post: any): PostItem => {
         excerpt: post?.attributes?.excerpt,
         category: post?.attributes?.category?.data?.attributes?.name,
         date: post?.attributes?.createdAt,
-        author: post?.attributes?.author?.data?.attributes?.username
+        author: post?.attributes?.author?.data?.attributes?.full_name
     };
 }
 
