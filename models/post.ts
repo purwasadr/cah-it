@@ -86,9 +86,7 @@ const getPostSearch = async (query: string) => {
             }
         },
     }, { encodeValuesOnly: true });
-
-    console.log('getPostSearchQuery:', qsQuery);
-
+    
     const req = await axios.get(`${BACKEND_API}/api/posts?${qsQuery}`);
     
     return toPostSearch(req.data.data)
