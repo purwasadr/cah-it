@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'ngeblog-backend.herokuapp.com'],
+    domains: ['localhost', 'ngeblog-backend.herokuapp.com', 'ksszxsnjxegoikllrbgw.supabase.co'],
   }
 }
 
