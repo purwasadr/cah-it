@@ -1,4 +1,4 @@
-import { BACKEND_API } from 'libs/constants';
+import { MEDIA_BACKEND_API } from 'libs/constants';
 import { Post, PostItem } from 'models/post';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,7 +16,7 @@ const CardPost = ({className = '', inputRef, title, slug = '', image, excerpt, c
             className={`w-full h-full ${className}`}
         >
             <div className="relative aspect-[10/6] rounded-md overflow-hidden shadow-md">
-                {image && <Image className="" src={`${BACKEND_API}${image}`} layout="fill" objectFit="cover" alt="Image"/>}
+                {image && <Image className="" src={`${MEDIA_BACKEND_API}${image}`} layout="fill" objectFit="cover" alt="Image"/>}
             </div>
             <section>
                 <p className="pt-3.5 text-sky-700 tracking-wider uppercase text-sm font-medium">{category}</p>

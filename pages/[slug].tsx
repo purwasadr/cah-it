@@ -1,4 +1,4 @@
-import {BACKEND_API} from 'libs/constants';
+import {MEDIA_BACKEND_API} from 'libs/constants';
 import PostModel, {Post} from 'models/post';
 import {GetServerSideProps, NextPage} from 'next';
 import Image from 'next/image';
@@ -56,7 +56,7 @@ const PostDetail: NextPage<PageProps> = ({post}) => {
                 {post.data?.image && (
                     <div className="relative mt-8 rounded-lg overflow-hidden aspect-[10/6]">
                         <Image
-                            src={`${BACKEND_API}${post.data?.image}`}
+                            src={`${MEDIA_BACKEND_API}${post.data?.image}`}
                             layout="fill"
                             objectFit="cover"
                             alt="Image Post"
