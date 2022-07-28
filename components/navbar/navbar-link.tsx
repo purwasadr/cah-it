@@ -11,7 +11,7 @@ const NavbarLink = ({href, children, isDropdown = false}: Props) => {
     return (
         <li>
             <Link href={href}>
-                <a className="flex items-center py-2 text-gray-700 cursor-pointer dark:hover:text-white dark:text-gray-400">
+                <a className="flex items-center py-2 cursor-pointer dark:hover:text-white dark:text-gray-400">
                     {children}
                     {isDropdown && (
                         <svg

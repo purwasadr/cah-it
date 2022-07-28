@@ -55,7 +55,6 @@ const Navbar = () => {
                 .then((value) => setSearchResult(value))
                 .catch((reason) => {
                     setSearchResult([]);
-                    console.log(reason);
                 });
 
         }, 300)
@@ -69,17 +68,17 @@ const Navbar = () => {
                 <div className="flex items-center w-auto">
                     <Link href="/">
                         <a className="flex items-center">
-                            <span className="text-xl font-bold whitespace-nowrap dark:text-white">
+                            <span className="text-xl font-bold text-slate-900 whitespace-nowrap dark:text-white">
                                 Ngeblog
                             </span>
                         </a>
                     </Link>
                 </div>
                 <div className="hidden md:flex md:items-center ml-auto">
-                    <ul className="flex space-x-8 flex-wrap text-sm font-semibold">
+                    <ul className="flex space-x-8 flex-wrap text-slate-700 text-sm font-semibold">
                         <NavbarLink href="/">Home</NavbarLink>
                         <li>
-                            <div className="py-2 text-gray-700 cursor-pointer dark:hover:text-white dark:text-gray-400" 
+                            <div className="py-2 cursor-pointer dark:hover:text-white dark:text-gray-400" 
                                 onClick={() => setIsDialogCategoriesOpen(true)}>Categories</div>
                             <DialogCategories 
                                 isDialogOpen={isDialogCategoriesOpen} 
@@ -89,7 +88,7 @@ const Navbar = () => {
                 </div>
                 <div className="border-l ml-auto md:ml-4 pl-4">
                     <div className="cursor-pointer" onClick={() => setIsOpenDialog(true)}>
-                        <SearchIcon className="w-4 h-4" />
+                        <SearchIcon className="w-4 h-4 text-slate-700" />
                     </div>
                     <Dialog className="fixed inset-0 z-10" open={isOpenDialog} onClose={() => setIsOpenDialog(false)}>
                         <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-10" />

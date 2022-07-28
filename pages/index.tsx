@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <>
             {featuredPost
                 && 
-            (<section className="flex flex-col md:flex-row md:space-x-5">
+            (<section className="flex flex-col md:flex-row md:space-x-6">
                 <section className="w-full md:w-[60%] lg:w-2/3">
                     <div className="relative aspect-[10/6] md:aspect-auto md:h-[250px] lg:h-[300px] rounded-lg shadow-md overflow-hidden">
                        {featuredPost?.image && <Image src={`${BACKEND_API}${featuredPost?.image}`} alt="Poster" layout="fill" objectFit="cover" />}
