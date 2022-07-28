@@ -1,9 +1,7 @@
 import CardPost from '@/components/card/card-post';
 import Spinner from '@/components/spinner/spinner';
 import usePostCategoryPaging from 'libs/hooks/usePostCategoryPaging';
-import usePostPaging2 from 'libs/hooks/usePostPaging2';
 import CategoryModel from 'models/category';
-import PostModel from 'models/post';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
