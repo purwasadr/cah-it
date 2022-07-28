@@ -55,3 +55,11 @@ export const toCategories = (categories: any[]) => {
         slug: category?.attributes?.slug,
     }));
 }
+
+export const toCategory = (category: any): Category => {
+    return {
+        id: category?.id,
+        name: category?.attributes?.name,
+        slug: category?.attributes?.slug,
+    };
+}
