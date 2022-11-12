@@ -77,6 +77,7 @@ const Navbar = () => {
                 <div className="hidden md:flex md:items-center ml-auto">
                     <ul className="flex space-x-8 flex-wrap text-slate-700 text-sm font-semibold">
                         <NavbarLink href="/">Home</NavbarLink>
+                        <NavbarLink href="/discover">Discover</NavbarLink>
                         <li>
                             <div className="py-2 cursor-pointer dark:hover:text-white dark:text-gray-400" 
                                 onClick={() => setIsDialogCategoriesOpen(true)}>Categories</div>
