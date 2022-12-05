@@ -31,9 +31,7 @@ const Home: NextPage = () => {
                 <section className="flex flex-col justify-center w-full md:w-[40%] lg:w-1/3">
                     <p className="pt-4 text-sky-700 tracking-wider uppercase text-sm font-medium">{featuredPost?.category}</p>
                     <Link href={`/${encodeURIComponent(featuredPost?.slug ?? '')}`}>
-                        <a>
-                            <h2 className="pt-1 text-xl font-semibold">{featuredPost?.title}</h2>
-                        </a>
+                        <h2 className="pt-1 text-xl font-semibold">{featuredPost?.title}</h2>
                     </Link>
                     <p className="pt-1 text-slate-500">{featuredPost?.excerpt}</p>
                     <div className="flex items-center gap-2 pt-2 text-sm">
