@@ -1,14 +1,13 @@
 import type {NextPage} from 'next';
 import Image from 'next/image';
 import CardPost from '@/components/card/card-post';
-import { getDateShort } from 'utils';
-import usePostPaging from 'libs/hooks/usePostPaging';
+import { getDateShort } from '@/utils';
+import usePostPaging from '@/libs/hooks/usePostPaging';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import PostModel, { PostItem } from 'models/post';
+import PostModel, { PostItem } from '@/models/post';
 import Spinner from '@/components/spinner/spinner';
-import { BACKEND_API } from 'libs/constants';
-import useResource from 'libs/hooks/useResource';
+import { BACKEND_API } from '@/libs/constants';
+import useResource from '@/libs/hooks/useResource';
 
 const Home: NextPage = () => {
     const {isLoading, error, posts, lastPostElementRef} = usePostPaging();

@@ -1,9 +1,9 @@
 import {useState, useEffect, useRef, useCallback} from 'react';
-import PostModel, { PostItem } from 'models/post';
+import PostModel, { PostItem } from '@/models/post';
 import axios from 'axios';
 import QueryString from 'qs';
-import { toPosts } from 'utils/mapper';
-import { BACKEND_API } from 'libs/constants';
+import { toPosts } from '@/utils/mapper';
+import { BACKEND_API } from '@/libs/constants';
 
 function usePostCategoryPaging(slugCategory?: string) {
     const [isLoading, setIsLoading] = useState(true);

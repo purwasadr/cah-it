@@ -1,5 +1,5 @@
-import { Category } from 'models/category';
-import { Post, PostItem, PostSearch } from 'models/post';
+import { Category } from '@/models/category';
+import { Post, PostItem, PostSearch } from '@/models/post';
 
 export const toPosts = (posts: any[]) => {
     return posts.map((post): PostItem => ({

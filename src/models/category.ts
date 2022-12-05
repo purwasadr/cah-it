@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { BACKEND_API } from 'libs/constants';
+import { BACKEND_API } from '@/libs/constants';
 import qs from 'qs';
-import { toCategories, toCategory } from 'utils/mapper';
+import { toCategories, toCategory } from '@/utils/mapper';
 
 export interface Category {
     id?: number;

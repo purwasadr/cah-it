@@ -1,8 +1,8 @@
 import { Dialog } from '@headlessui/react';
-import useResource from 'libs/hooks/useResource';
-import CategoryModel, { Category } from 'models/category';
+import useResource from '@/libs/hooks/useResource';
+import CategoryModel, { Category } from '@/models/category';
 import Link from 'next/link';
-import Spinner from '../spinner/spinner';
+import Spinner from '@/components/spinner/spinner';
 
 interface Props {
     isDialogOpen: boolean;

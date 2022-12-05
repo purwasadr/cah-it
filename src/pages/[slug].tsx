@@ -1,10 +1,10 @@
-import {MEDIA_BACKEND_API} from 'libs/constants';
-import PostModel, {Post} from 'models/post';
+import {MEDIA_BACKEND_API} from '@/libs/constants';
+import PostModel, {Post} from '@/models/post';
 import {GetServerSideProps, NextPage} from 'next';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import {deleteUndefined, getDateShort} from 'utils';
+import {deleteUndefined, getDateShort} from '@/utils';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     try {

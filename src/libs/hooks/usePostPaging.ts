@@ -1,5 +1,5 @@
 import {useState, useEffect, useRef, useCallback} from 'react';
-import PostModel, { PostItem } from 'models/post';
+import PostModel, { PostItem } from '@/models/post';
 
 function usePostPaging() {
     const [isLoading, setIsLoading] = useState(true);

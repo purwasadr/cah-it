@@ -1,8 +1,8 @@
-import { MEDIA_BACKEND_API } from 'libs/constants';
-import { Post, PostItem } from 'models/post';
+import { MEDIA_BACKEND_API } from '@/libs/constants';
+import { Post, PostItem } from '@/models/post';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getDateShort } from 'utils';
+import { getDateShort } from '@/utils';
 
 interface Props extends PostItem {
     className?: string;

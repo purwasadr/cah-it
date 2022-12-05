@@ -1,6 +1,6 @@
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import type {AppProps} from 'next/app';
-import Primary from '../components/layout/primary';
+import Primary from '@/components/layout/primary';
 import NextNProgress from 'nextjs-progressbar';
 
 function MyApp({Component, pageProps}: AppProps) {

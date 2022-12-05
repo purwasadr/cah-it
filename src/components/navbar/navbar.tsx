@@ -1,5 +1,5 @@
 import {Combobox, Dialog, Menu} from '@headlessui/react';
-import PostModel, {PostSearch} from 'models/post';
+import PostModel, {PostSearch} from '@/models/post';
 import Link from 'next/link';
 import {ChangeEvent, forwardRef, useRef, useState} from 'react';
 import DialogCategories from '../dialog/dialog-categories';
