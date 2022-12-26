@@ -16,7 +16,7 @@ const CardPost = ({className = '', inputRef, title, slug = '', image, excerpt, c
             className={`w-full h-full ${className}`}
         >
             <div className="relative aspect-[10/6] rounded-md overflow-hidden shadow-md">
-                {image && <Image className="" src={`${MEDIA_BACKEND_API}${image}`} layout="fill" objectFit="cover" alt="Image"/>}
+                {image && <Image className="object-cover" src={`${MEDIA_BACKEND_API}${image}`} fill alt="Image"/>}
             </div>
             <section>
                 <p className="pt-3.5 text-sky-700 tracking-wider uppercase text-sm font-medium">{category}</p>

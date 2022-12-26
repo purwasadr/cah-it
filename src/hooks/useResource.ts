@@ -2,10 +2,11 @@ import {useEffect, useState} from 'react';
 
 const useResource = <T>(
     resource: Promise<T>
-): [T | undefined, boolean, any] => {
+): [T | undefined, boolean, any, () => void] => {
     const [data, setData] = useState<T>();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<any>();
+    const [triggerEffect, setTriggerEffect] = useState({});
 
     useEffect(() => {
         setIsLoading(true);
@@ -20,9 +21,13 @@ const useResource = <T>(
                 setIsLoading(false);
             });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [triggerEffect]);
 
-    return [data, isLoading, error];
+    const tryAgain = () => {
+        setTriggerEffect({})
+    }
+
+    return [data, isLoading, error, tryAgain];
 };
 
 export default useResource;

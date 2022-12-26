@@ -12,6 +12,7 @@ export default function usePaging<T>(
     const [hasMore, setHasMore] = useState(false);
     const [pageNum, setPageNum] = useState(1);
     const [isEmpty, setIsEmpty] = useState(false);
+    const [trigger, setTrigger] = useState({});
     const [isInitialLoad, setIsInitialLoad] = useState(false);
     
     useEffect(() => {
@@ -59,7 +60,8 @@ export default function usePaging<T>(
         return () => {
             abortController.abort();
         };
-    }, [pageNum, query]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pageNum, query, trigger]);
 
     useEffect(() => {
         setIsEmpty(!isLoading && items.length === 0 && isInitialLoad && !error);
@@ -69,5 +71,9 @@ export default function usePaging<T>(
         setPageNum((prev) => prev + 1);
     }
 
-    return {isLoading, error, items, hasMore, isEmpty, loadMore};
+    const tryAgain = () => {
+        setTrigger({});
+    }
+
+    return {isLoading, error, items, hasMore, isEmpty, loadMore, tryAgain};
 }

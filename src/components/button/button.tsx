@@ -23,7 +23,7 @@ const Button = ({
             type={type}
             className={
                 clsxm(
-                    "focus:outline-none focus:ring-2 focus:ring-offset-2 font-medium rounded-md text-sm px-4 py-2.5 text-primary",
+                    "block focus:outline-none focus:ring-2 focus:ring-offset-2 font-medium rounded-md text-sm px-4 py-2.5 text-primary",
                     [ 
                         variant === "fill" && "bg-primary text-white hover:bg-primary-dark focus:ring-primary",
                         variant === "outline" && "bg-white text-slate-900 border border-gray-200 shadow-sm hover:bg-gray-100 focus:ring-slate-200"
