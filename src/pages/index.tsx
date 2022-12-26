@@ -2,12 +2,12 @@ import type {NextPage} from 'next';
 import Image from 'next/image';
 import CardPost from '@/components/card/card-post';
 import { getDateShort } from '@/utils';
-import usePostPaging from '@/libs/hooks/usePostPaging';
+import usePostPaging from '@/hooks/usePostPaging';
 import Link from 'next/link';
 import PostModel, { PostItem } from '@/models/post';
 import Spinner from '@/components/spinner/spinner';
 import { BACKEND_API } from '@/libs/constants';
-import useResource from '@/libs/hooks/useResource';
+import useResource from '@/hooks/useResource';
 
 const Home: NextPage = () => {
     const {isLoading, error, posts, lastPostElementRef} = usePostPaging();
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
             (<section className="flex flex-col md:flex-row md:space-x-6">
                 <section className="w-full md:w-[60%] lg:w-2/3">
                     <div className="relative aspect-[10/6] md:aspect-auto md:h-[250px] lg:h-[300px] rounded-lg shadow-md overflow-hidden">
-                       {featuredPost?.image && <Image src={`${BACKEND_API}${featuredPost?.image}`} alt="Poster" layout="fill" objectFit="cover" />}
+                       {featuredPost?.image && <Image src={`${BACKEND_API}${featuredPost?.image}`} alt="Poster" fill objectFit="cover" />}
                     </div>
                 </section>
                 <section className="flex flex-col justify-center w-full md:w-[40%] lg:w-1/3">
