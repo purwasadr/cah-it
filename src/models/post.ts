@@ -42,7 +42,7 @@ const getPosts = async () => {
     return toPosts(res.data.data);
 }
 
-const getFeaturedPost = async () => {
+const getFeaturedPosts = async () => {
     const qsQuery = qs.stringify({
         filters: {
             featured: {
@@ -51,15 +51,15 @@ const getFeaturedPost = async () => {
         },
         sort: ['createdAt:desc'],
         pagination: {
-            pageSize: 1,
+            pageSize: 4,
         },
         populate: ['image', 'category', 'author']
     }, { encodeValuesOnly: true });
 
     const res = await axios.get(`${BACKEND_API}/api/posts?${qsQuery}`);
-    const dataPost = res.data.data[0];
+    const dataPost = res.data.data;
 
-    return dataPost ? toPostItem(dataPost) : undefined;
+    return dataPost ? toPosts(dataPost) : undefined;
 }
 
 const getPost = async (slug: string) => {
@@ -107,8 +107,6 @@ const getPostsPaging = (pageNum: number, pageSize: number = 20) => {
     }, { encodeValuesOnly: true });
     const abortController = new AbortController();
 
-    console.log('getPostsPaging:', qsQuery);
-
     const reqPosts = async () => {
         const req = await axios.get(`${BACKEND_API}/api/posts?${qsQuery}`, { 
             signal: abortController.signal
@@ -125,12 +123,27 @@ const getPostsPaging = (pageNum: number, pageSize: number = 20) => {
     }
 }
 
+const getTopPosts = async (pageSize: number) => {
+    const qsQuery = qs.stringify({
+        populate: ['image', 'category', 'author'],
+        sort: ['likes:desc'],
+        pagination: {
+            pageSize: pageSize,
+        },
+    }, { encodeValuesOnly: true });
+    
+    const req = await axios.get(`${BACKEND_API}/api/posts?${qsQuery}`);
+    
+    return toPosts(req.data.data)
+}
+
 const PostModel = {
     getPosts,
     getPost,
     getPostSearch,
     getPostsPaging,
-    getFeaturedPost,
+    getFeaturedPosts,
+    getTopPosts
 }
 
 export default PostModel;
