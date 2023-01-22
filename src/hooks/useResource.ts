@@ -5,7 +5,7 @@ const useResource = <T>(
 ): [T | undefined, boolean, any, () => void] => {
     const [data, setData] = useState<T>();
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<any>();
+    const [error, setError] = useState<any>(null);
     const [triggerEffect, setTriggerEffect] = useState({});
 
     useEffect(() => {
@@ -25,6 +25,7 @@ const useResource = <T>(
 
     const tryAgain = () => {
         setTriggerEffect({})
+        setError(null);
     }
 
     return [data, isLoading, error, tryAgain];
